@@ -10,7 +10,7 @@ def index():
   except:
       return "{'error':'empty'}"
   ele=elevation_data.get_elevation(lat, lon)
-  if ele in None:
+  if ele is None:
      ele = -32767
   s = '{"ele":'+str(ele)+', "lat":"'+lat+'","lon":"'+lon+'","src":"nasa_srtm","src_str":"Nasa SRTM"}'
   return s
