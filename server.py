@@ -10,7 +10,9 @@ def index():
   except:
       return "{'error':'empty'}"
   ele=elevation_data.get_elevation(lat, lon)
-  s = "{'ele':"+str(ele)+",'lat':'"+lat+"','lon':'"+lon+"','src':'nasa_srtm','src_str':'Nasa SRTM'}"
+  if ele in None:
+     ele = -32767
+  s = '{"ele":'+str(ele)+', "lat":"'+lat+'","lon":"'+lon+'","src":"nasa_srtm","src_str":"Nasa SRTM"}'
   return s
 elevation_data = srtm.get_data()
 run(host='0.0.0.0', port=5007,server='paste') 
